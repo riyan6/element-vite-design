@@ -20,13 +20,68 @@ code {
   color: var(--ep-color-primary);
 }
 
+
+
+
+// ============================================ Input ============================================
+
+
+
+
+
 // 输入框
 .ep-input {
+  // 输入框颜色
   --ep-input-border-color: #b3b3b3;
+  // 已输入的文本颜色
+  --ep-text-color-regular: black;
+  // 提示文本颜色
+  --ep-text-color-placeholder: #666666;
 }
+
+
+
+
+
+// ============================================ Card ============================================
+
+
+
+
 
 // card
 .ep-card {
   --ep-card-border-color: transparent;
   box-shadow:0px 0px 6px rgba(82, 106, 222, 0.4);
+}
+.ep-card.is-always-shadow {
+  box-shadow:0px 0px 6px rgba(82, 106, 222, 0.4);
+}
+
+
+
+
+
+// ============================================ Button ============================================
+
+
+
+
+
+// 普通次要按钮
+.ep-button {
+  // 按钮边框颜色
+  --ep-border-color: rgba(179, 179, 179, 1);
+  // 按钮字体颜色
+  --ep-text-color-regular: rgba(51, 51, 51, 1);
+}
+
+// 按钮hover状态
+.ep-button:hover, .ep-button:focus {
+  // hover 边框颜色
+  --ep-color-primary-light-7: rgba(82, 106, 222, 1);
+  // hover 背景颜色
+  --ep-color-primary-light-9: white;
+  // hover 文字颜色
+  --ep-color-primary: rgba(82, 106, 222, 1);
 }
