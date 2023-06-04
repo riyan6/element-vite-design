@@ -6,7 +6,8 @@
 </template>
 
 <script setup lang="ts">
-import { reactive, toRefs } from 'vue';
+import { ElMessage } from 'element-plus';
+import { reactive, toRefs, defineExpose } from 'vue';
 
 // prop
 const prop = defineProps({
@@ -40,6 +41,12 @@ const onSendMessageToParent = () => {
     emit('newMessage',new Date().getTime())
 }
 
+// 供父组件调用的方法
+const outFunc = () => {
+    ElMessage.success('outFunc by child.vue')
+}
+
+defineExpose({ outFunc })
 
 </script>
 

@@ -26,12 +26,15 @@
     <ElDivider />
     <p>子消息传递列表：{{ childMessageList }}</p>
     <ElDivider />
+    <ElButton type="primary" @click="onExecuteChildFunc">调用子组件的 executeMessage 方法</ElButton>
+    <ElDivider />
     <!-- 子组件 -->
-    <child :message="message" v-model="status" @new-message="reviceNewMessage" />
+    <child ref="childRef" :message="message" v-model="status" @new-message="reviceNewMessage" />
 </template>
 
 <script setup lang="ts">
-import { computed, reactive, toRefs, watch } from 'vue';
+import { ElMessage } from 'element-plus';
+import { computed, reactive, ref, toRefs, watch } from 'vue';
 
 // data
 const state = reactive({
@@ -40,6 +43,9 @@ const state = reactive({
     childMessageList: [] as any[],
     updateCount: 0
 })
+
+// ref
+const childRef = ref(null) as any
 
 // computed
 const realMessage = computed(() => `【${state.message}】`)
@@ -59,6 +65,11 @@ watch(message, (newVal, oldVal) => {
 // 子组件通信
 const reviceNewMessage = (val: any) => {
     state.childMessageList.push(val)
+}
+
+// 调用子组件的方法
+const onExecuteChildFunc = () => {
+    childRef.value.outFunc()
 }
 
 </script>
